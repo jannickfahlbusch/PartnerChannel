@@ -41,7 +41,7 @@ type genericResponse struct {
 	Metadata *MetadataResponse
 }
 
-// NewClient creates a new cliente with the given apiToken and httpClient (Uses http.DefaultClient by default)
+// NewClient creates a new client with the given apiToken and httpClient (Uses http.DefaultClient by default)
 func NewClient(apiToken string, httpClient *http.Client) (*Client, error) {
 	client := &Client{}
 
