@@ -26,19 +26,9 @@ type Client struct {
 	Debug        bool
 
 	// Endpoints
-	Account Account
-	Acme    Acme
-}
-
-// genericRequest represents the structure of the default request format
-type genericRequest struct {
-	Data     interface{}
-	Metadata *MetadataRequest
-}
-
-// genericResponse represents the structure of the default response format
-type genericResponse struct {
-	Metadata *MetadataResponse
+	Account        Account
+	Acme           Acme
+	NameserverZone NameserverZone
 }
 
 // NewClient creates a new client with the given apiToken and httpClient (Uses http.DefaultClient by default)
@@ -57,6 +47,7 @@ func NewClient(apiToken string, httpClient *http.Client) (*Client, error) {
 	// Setup the endpoints
 	client.Account = &accountEndpoint{client: client}
 	client.Acme = &acmeEndpoint{client: client}
+	client.NameserverZone = &nameserverZoneEndpoint{client: client}
 
 	return client, err
 }
